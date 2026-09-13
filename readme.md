@@ -95,23 +95,3 @@ Jika Anda lupa password login dashboard:
 cd /opt/openvpn-api
 sudo ./openvpn-api -reset-password-user admin -reset-password-pass password_baru_anda
 ```
-
----
-
-## 🔄 Cara Update Binary di Masa Depan
-
-Jika ada pembaruan kode aplikasi:
-1. Build binary baru di komputer pengembang:
-   ```bash
-   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o openvpn-api main.go
-   ```
-2. Upload binary baru ke server:
-   ```bash
-   scp openvpn-api user@IP_SERVER_ANDA:/home/user/
-   ```
-3. Timpa binary lama dan restart service:
-   ```bash
-   sudo cp /home/user/openvpn-api /opt/openvpn-api/openvpn-api
-   sudo chmod +x /opt/openvpn-api/openvpn-api
-   sudo systemctl restart openvpn-api
-   ```
